@@ -1,0 +1,19 @@
+{
+  "name": "node-strophe",
+  "version": "1.0.0",
+  "description": "A Node.js compatible version of Strophe.js, borrowed from https://github.com/dhruvbird/node-xmpp-bosh",
+  "main": "strophe.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "XMPP",
+    "Strophe",
+    "node"
+  ],
+  "author": "Tijs Zwinkels <tijs.zwinkels@iperity.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jsdom": "~0.2.15"
+  }
+}
