@@ -16,7 +16,7 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/Iperity/node-strophe.git"
-  }
+  },
   "dependencies": {
     "jsdom": "~0.2.15"
   }
