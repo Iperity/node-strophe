@@ -57,7 +57,7 @@
  *    seems to always convert node names to upper case.
  *
  */
-var XMLHttpRequest = require('./XMLHttpRequest.js').XMLHttpRequest;
+var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 var Base64         = require('./base64.js').Base64;
 var MD5            = require('./md5.js').MD5;
 var jsdom          = require("jsdom").jsdom;
