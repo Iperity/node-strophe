@@ -2,6 +2,7 @@ node-Strophe
 =============
 
 A Node.js compatible version of Strophe.js, borrowed from https://github.com/dhruvbird/node-xmpp-bosh.
+This code mostly identical to Strophe.js release 1.0.2.
 
 ## Installation
 
