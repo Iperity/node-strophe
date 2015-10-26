@@ -62,13 +62,12 @@ var Base64         = require('./base64.js').Base64;
 var MD5            = require('./md5.js').MD5;
 var jsdom          = require("jsdom").jsdom;
 
-document = jsdom("<html><head></head><body></body></html>"),
+document = jsdom("test");
+window = document.defaultView;
+window.XMLHttpRequest = XMLHttpRequest;
+window.Base64 = Base64;
+window.MD5 = MD5;
 
-window = {
-    XMLHttpRequest: XMLHttpRequest, 
-    Base64: Base64, 
-    MD5: MD5
-};
 
 exports.Strophe = window;
 
@@ -331,8 +330,8 @@ Strophe = {
     {
         var i, childNode;
 
-        for (i = 0; i < elem._childNodes.length; i++) {
-            childNode = elem._childNodes[i];
+        for (i = 0; i < elem.childNodes.length; i++) {
+            childNode = elem.childNodes[i];
             if (childNode.nodeType == Strophe.ElementType.NORMAL &&
                 (!elemName || this.isTagEqual(childNode, elemName))) {
                 func(childNode);
@@ -533,14 +532,14 @@ Strophe = {
         if (!elem) { return null; }
 
         var str = "";
-        if (elem._childNodes.length === 0 && elem.nodeType ==
+        if (elem.childNodes.length === 0 && elem.nodeType ==
             Strophe.ElementType.TEXT) {
             str += elem.nodeValue;
         }
 
-        for (var i = 0; i < elem._childNodes.length; i++) {
-            if (elem._childNodes[i].nodeType == Strophe.ElementType.TEXT) {
-                str += elem._childNodes[i].nodeValue;
+        for (var i = 0; i < elem.childNodes.length; i++) {
+            if (elem.childNodes[i].nodeType == Strophe.ElementType.TEXT) {
+                str += elem.childNodes[i].nodeValue;
             }
         }
 
@@ -570,8 +569,8 @@ Strophe = {
                                 elem.attributes[i].value);
             }
 
-            for (i = 0; i < elem._childNodes.length; i++) {
-                el.appendChild(Strophe.copyElement(elem._childNodes[i]));
+            for (i = 0; i < elem.childNodes.length; i++) {
+                el.appendChild(Strophe.copyElement(elem.childNodes[i]));
             }
         } else if (elem.nodeType == Strophe.ElementType.TEXT) {
             el = Strophe.xmlTextNode(elem.nodeValue);
@@ -819,11 +818,10 @@ Strophe = {
                        .replace(/</g, "&lt;") + "'";
                }
         }
-
-        if (elem._childNodes.length > 0) {
+        if (elem.childNodes.length > 0) {
             result += ">";
-            for (i = 0; i < elem._childNodes.length; i++) {
-                child = elem._childNodes[i];
+            for (i = 0; i < elem.childNodes.length; i++) {
+                child = elem.childNodes[i];
                 if (child.nodeType == Strophe.ElementType.NORMAL) {
                     // normal element, so recurse
                     result += Strophe.serialize(child);
@@ -1354,7 +1352,7 @@ Strophe.Request.prototype = {
 			// Hack for node.
 			var _div = document.createElement("div");
 			_div.innerHTML = this.xhr.responseText;
-			node = _div._childNodes[0];
+			node = _div.childNodes[0];
 
             Strophe.error("invalid response received");
             Strophe.error("responseText: " + this.xhr.responseText);
@@ -1885,7 +1883,7 @@ Strophe.Connection.prototype = {
     _queueData: function (element) {
         if (element === null ||
             !element.tagName ||
-            !element._childNodes) {
+            !element.childNodes) {
             throw {
                 name: "StropheError",
                 message: "Cannot queue non-DOMElement."
@@ -2913,8 +2911,8 @@ Strophe.Connection.prototype = {
 
         var i, child;
 
-        for (i = 0; i < elem._childNodes.length; i++) {
-            child = elem._childNodes[i];
+        for (i = 0; i < elem.childNodes.length; i++) {
+            child = elem.childNodes[i];
             if (child.nodeName.toLowerCase() == 'bind') {
                 this.do_bind = true;
             }
