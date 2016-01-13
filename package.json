@@ -21,8 +21,6 @@
     "url": "git://github.com/Iperity/node-strophe.git"
   },
   "dependencies": {
-    "btoa": "^1.1.2",
-    "jquery": "^2.2.0",
     "jsdom": "^6.5.1",
     "xmlhttprequest": "^1.7.0"
   }
