@@ -3,8 +3,8 @@
   "version": "2.0.0",
   "description": "A Node.js compatible version of Strophe.js, borrowed from https://github.com/dhruvbird/node-xmpp-bosh",
   "main": "strophe.js",
-  "engines" : { 
-	"node" : "^4.0.0" 
+  "engines": {
+    "node": "^4.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +21,8 @@
     "url": "git://github.com/Iperity/node-strophe.git"
   },
   "dependencies": {
+    "btoa": "^1.1.2",
+    "jquery": "^2.2.0",
     "jsdom": "^6.5.1",
     "xmlhttprequest": "^1.7.0"
   }

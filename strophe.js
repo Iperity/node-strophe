@@ -1336,7 +1336,7 @@ Strophe.Request.prototype = {
      */
     getResponse: function ()
     {
-		// console.log("getResponse:", this.xhr.responseXML, ":", this.xhr.responseText);
+        // console.log("getResponse:", this.xhr.responseXML, ":", this.xhr.responseText);
 
         var node = null;
         if (this.xhr.responseXML && this.xhr.responseXML.documentElement) {
@@ -1345,19 +1345,19 @@ Strophe.Request.prototype = {
                 Strophe.error("invalid response received");
                 Strophe.error("responseText: " + this.xhr.responseText);
                 Strophe.error("responseXML: " +
-                              Strophe.serialize(this.xhr.responseXML));
+                    Strophe.serialize(this.xhr.responseXML));
                 throw "parsererror";
             }
         } else if (this.xhr.responseText) {
-			// Hack for node.
-			var _div = document.createElement("div");
-			_div.innerHTML = this.xhr.responseText;
-			node = _div.childNodes[0];
+            // Hack for node.
+            var jsdom = require("jsdom").jsdom;
+            var myDoc = jsdom(this.xhr.responseText, {parsingMode: "xml"});
+            node = myDoc.documentElement;
 
             Strophe.error("invalid response received");
             Strophe.error("responseText: " + this.xhr.responseText);
             Strophe.error("responseXML: " +
-                          Strophe.serialize(this.xhr.responseXML));
+                Strophe.serialize(this.xhr.responseXML));
         }
 
         return node;
