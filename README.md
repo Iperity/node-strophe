@@ -6,6 +6,7 @@ This is code mostly identical to Strophe.js release 1.0.2.
 
 Please note: All releases from version v2.0.0 onwards have been modified to work with jsdom 6 for compatibility with Node.js 4.
 jsdom 6 is not compatible with Node.js 0.x. If you're working on Node.js 0.x, use the node-Strophe 1.0.1 release.
+Also, if you're using jsdom in your own application (for example to load jQuery), the way to use jsdom has been changed. See https://github.com/tmpvar/jsdom.
 
 ## Installation
 
