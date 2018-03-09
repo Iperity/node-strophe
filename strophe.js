@@ -801,16 +801,16 @@ Strophe = {
             elem = elem.tree();
         }
 
-        var nodeName = elem.nodeName.toLowerCase();
+        var nodeName = elem.nodeName;
         var i, child;
 
         if (elem.getAttribute("_realname")) {
-            nodeName = elem.getAttribute("_realname").toLowerCase();
+            nodeName = elem.getAttribute("_realname");
         }
 
-        result = "<" + nodeName.toLowerCase();
+        result = "<" + nodeName;
         for (i = 0; i < elem.attributes.length; i++) {
-               if(elem.attributes[i].nodeName.toLowerCase() != "_realname") {
+               if(elem.attributes[i].nodeName != "_realname") {
                  result += " " + elem.attributes[i].nodeName.toLowerCase() +
                 "='" + elem.attributes[i].value
                     .replace(/&/g, "&amp;")
@@ -830,7 +830,7 @@ Strophe = {
                     result += child.nodeValue;
                 }
             }
-            result += "</" + nodeName.toLowerCase() + ">";
+            result += "</" + nodeName + ">";
         } else {
             result += "/>";
         }
@@ -2913,11 +2913,11 @@ Strophe.Connection.prototype = {
 
         for (i = 0; i < elem.childNodes.length; i++) {
             child = elem.childNodes[i];
-            if (child.nodeName.toLowerCase() == 'bind') {
+            if (child.nodeName == 'bind') {
                 this.do_bind = true;
             }
 
-            if (child.nodeName.toLowerCase() == 'session') {
+            if (child.nodeName == 'session') {
                 this.do_session = true;
             }
         }
